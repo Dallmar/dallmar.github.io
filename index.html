@@ -1,0 +1,45 @@
+<meta charset="utf-8">
+
+<script>
+	var x, y, z, res, code, op;	
+	var n = 2; /* Кол-во повторений*/
+	var right = 0; /* Счетчик правильных ответов */
+	var variants = ['+', '-', '*', '/'];
+	
+	function randomInt(min, max){
+		var rand = Math.floor(Math.random()*(max-min+1))+min;
+		return rand;
+		}
+	function mathOp(a, b, op){
+		var res
+		
+		if (op == '+'){
+			res = a + b;
+		} else if (op == '-'){
+			res = a - b;
+		} else if (op == '*'){
+			res = a * b;
+		} else if (op == '/'){
+			res = a / b;
+		} else {
+		res = false;
+			}
+		return res;
+		}
+
+	for(i = 0; i < n; i++) {
+		y = randomInt(3, 15);
+		z = randomInt(3, 15);
+		code = randomInt(0, 3);
+		op = variants[code];
+		res = mathOp(y, z, op);
+		
+		console.log(res.toFixed(2), y, z, op);
+	x = +prompt('Вычислите: ' +y+ ' ' +op+ ' ' +z+ '= ??');
+		if (x == res){
+			alert("Правильно");
+			right++;
+		} else {alert("Неправильно"); }
+	}
+	console.log("Правильных ответов: " +right+ " из " +n);
+</script>
